@@ -1,0 +1,31 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: hello-chris-test
+  namespace: hello-chris
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
+spec:
+  serviceAccountName: pipeline
+  pipelineRef:
+    name: hello-chris-pipeline
+  params:
+  - name: namespace
+    value: "hello-chris"
+  - name: deployment-name
+    value: "hello-chris"
+  - name: git-url
+    value: "https://github.com/cnuland/aro-hello-chris-tekton-chains.git"
+  - name: git-revision
+    value: "main"
+  - name: IMAGE
+    value: "quay.io/cnuland/hello-chris"
+  - name: TLSVERIFY
+    value: "true"
+  - name: working-dir
+    value: "app"
+  workspaces:
+  - name: shared-workspace
+    persistentvolumeclaim:
+      claimName: tekton-pvc

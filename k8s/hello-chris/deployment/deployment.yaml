@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello-chris
+    app.kubernetes.io/component: hello-chris
+    app.kubernetes.io/instance: hello-chris
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-options: "SkipDryRunOnMissingResource=true"
+  name: hello-chris
+  namespace: hello-chris
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: hello-chris
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        deployment: hello-chris
+    spec:
+      containers:
+      - image: 'quay.io/cnuland/hello-chris:latest'
+        name: 'hello-chris'
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
