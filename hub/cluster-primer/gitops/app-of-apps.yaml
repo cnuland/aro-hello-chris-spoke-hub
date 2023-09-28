@@ -1,19 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-onboarding
+  name: app-of-apps
   namespace: openshift-gitops
-  annotations:
-    argocd.argoproj.io/sync-wave: "4"
-
 spec:
   destination:
     name: ''
-    namespace: '*'
+    namespace: 'openshift-gitops'
     server: 'https://kubernetes.default.svc'
   source:
-    path: k8s/onboarding
-    repoURL: 'https://github.com/cnuland/aro-hello-chris-tekton-chains.git'
+    path: hub/k8s/apps
+    repoURL: 'https://github.com/cnuland/aro-hello-chris-spoke-hub.git'
     targetRevision: HEAD
     directory:
       recurse: false

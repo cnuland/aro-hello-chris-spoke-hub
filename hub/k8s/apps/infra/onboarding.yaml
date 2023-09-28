@@ -1,18 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-secrets
+  name: app-onboarding
   namespace: openshift-gitops
   annotations:
     argocd.argoproj.io/sync-wave: "4"
+
 spec:
   destination:
     name: ''
-    namespace: 'external-secrets'
+    namespace: '*'
     server: 'https://kubernetes.default.svc'
   source:
-    path: k8s/operators/external-secrets/overlays/default
-    repoURL: 'https://github.com/cnuland/aro-hello-chris-tekton-chains.git'
+    path: hub/k8s/onboarding
+    repoURL: 'https://github.com/cnuland/aro-hello-chris-spoke-hub.git'
     targetRevision: HEAD
     directory:
       recurse: false

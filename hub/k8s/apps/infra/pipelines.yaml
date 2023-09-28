@@ -12,8 +12,8 @@ spec:
     namespace: '*'
     server: 'https://kubernetes.default.svc'
   source:
-    path: k8s/operators/openshift-pipelines/overlays/default
-    repoURL: 'https://github.com/cnuland/aro-hello-chris-tekton-chains.git'
+    path: hub/k8s/operators/openshift-pipelines/overlays/default
+    repoURL: 'https://github.com/cnuland/aro-hello-chris-spoke-hub.git'
     targetRevision: HEAD
     directory:
       recurse: false
