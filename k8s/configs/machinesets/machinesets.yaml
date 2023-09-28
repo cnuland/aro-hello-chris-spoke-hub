@@ -45,9 +45,10 @@ spec:
             name: azure-cloud-credentials
             namespace: openshift-machine-api
           zone: '1'
+          publicIP: false
           resourceGroup: <resource-group>
           kind: AzureMachineProviderSpec
-          location: eastus
+          location: <location>
           vmSize: Standard_D4s_v3
-          subnet: cluster-aro-machine-subnet-eastus
+          subnet: <subnet>
           image: {}

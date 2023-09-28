@@ -4,8 +4,7 @@ metadata:
   name: infra-machinesets
   namespace: openshift-gitops
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
-
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   destination:
     name: ''

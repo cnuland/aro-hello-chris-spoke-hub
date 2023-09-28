@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-onboarding
+  name: policies
   namespace: openshift-gitops
   annotations:
     argocd.argoproj.io/sync-wave: "1"
@@ -12,7 +12,7 @@ spec:
     namespace: '*'
     server: 'https://kubernetes.default.svc'
   source:
-    path: k8s/onboarding
+    path: k8s/policies
     repoURL: 'https://github.com/cnuland/aro-hello-chris-tekton-chains.git'
     targetRevision: HEAD
     directory:
